@@ -17,12 +17,12 @@ public class Slot {
 		return vehicle;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
-
 	public String getTicketId() {
 		return ticketId;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 
 	public void setTicketId(String ticketId) {
