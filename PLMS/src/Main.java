@@ -2,7 +2,6 @@
 public class Main {
 
 	public static void main(String[] args) {
-
 		int nFloors = 4;
 		int nSlotsPerFloor = 6;
 		ParkingLot parkingLot = new ParkingLot("PR1234", nFloors, nSlotsPerFloor);
@@ -27,7 +26,6 @@ public class Main {
 		System.out.println("After parking three more trucks:");
 
 		parkingLot.parkVehicle("truck", "MH-01-723", "black");
-
 	}
 
 }

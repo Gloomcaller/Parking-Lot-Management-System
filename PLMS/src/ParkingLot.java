@@ -27,7 +27,7 @@ public class ParkingLot {
 		for (int i = 0; i < slots.size(); i++) {
 			for (int j = 0; j < slots.get(i).size(); j++) {
 				Slot slot = slots.get(i).get(j);
-				if (slot.type == type && slot.vehicle == null) {
+				if (slot.type.equals(type) && slot.vehicle == null) {
 					slot.vehicle = vehicle;
 					slot.ticketId = generateTicketId(i + 1, j + 1);
 					return slot.ticketId;
@@ -36,22 +36,32 @@ public class ParkingLot {
 		}
 		System.out.println("NO slot available for given type");
 		return null;
-
 	}
 
 	void unPark(String ticketId) {
 		String[] extract = ticketId.split("_");
-		int flr_idx = Integer.parseInt(extract[1]) - 1;
-		int slot_idx = Integer.parseInt(extract[2]) - 1;
-		for (int i = 0; i < slots.size(); i++) {
-			for (int j = 0; j < slots.get(i).size(); j++) {
-				if (i == flr_idx && j == slot_idx) {
-					Slot slot = slots.get(i).get(j);
-					slot.vehicle = null;
-					slot.ticketId = null;
-					System.out.println("Unparked vehicle");
-				}
-			}
+		int flr_idx, slot_idx;
+
+		try {
+			flr_idx = Integer.parseInt(extract[1]) - 1;
+			slot_idx = Integer.parseInt(extract[2]) - 1;
+		} catch (Exception e) {
+			System.out.println("Invalid ticket");
+			return;
+		}
+
+		if (flr_idx < 0 || flr_idx >= slots.size() || slot_idx < 0 || slot_idx >= slots.get(flr_idx).size()) {
+			System.out.println("Invalid ticket");
+			return;
+		}
+
+		Slot slot = slots.get(flr_idx).get(slot_idx);
+		if (slot.vehicle == null) {
+			System.out.println("Slot already empty");
+		} else {
+			slot.vehicle = null;
+			slot.ticketId = null;
+			System.out.println("Unparked vehicle");
 		}
 	}
 
@@ -63,11 +73,11 @@ public class ParkingLot {
 		int count = 0;
 		for (List<Slot> floor : slots) {
 			for (Slot slot : floor) {
-				if (slot.vehicle == null && slot.type.equals(type))
+				if (slot.vehicle == null && slot.type.equals(type)) {
 					count++;
+				}
 			}
 		}
-
 		return count;
 	}
 
@@ -76,8 +86,9 @@ public class ParkingLot {
 		for (int i = 0; i < slots.size(); i++) {
 			for (int j = 0; j < slots.get(i).size(); j++) {
 				Slot slot = slots.get(i).get(j);
-				if (slot.vehicle == null && slot.type.equals(type))
+				if (slot.vehicle == null && slot.type.equals(type)) {
 					System.out.println("Floor " + (i + 1) + " slot " + (j + 1));
+				}
 			}
 		}
 	}
@@ -87,8 +98,9 @@ public class ParkingLot {
 		for (int i = 0; i < slots.size(); i++) {
 			for (int j = 0; j < slots.get(i).size(); j++) {
 				Slot slot = slots.get(i).get(j);
-				if (slot.vehicle != null && slot.type.equals(type))
+				if (slot.vehicle != null && slot.type.equals(type)) {
 					System.out.println("Floor " + (i + 1) + " slot " + (j + 1));
+				}
 			}
 		}
 	}
