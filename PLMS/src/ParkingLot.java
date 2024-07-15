@@ -42,4 +42,27 @@ public class ParkingLot {
 		return parkingLotID + "_" + flr + "_" + slno;
 	}
 
+	public void unPark(String ticketId) {
+		String[] extract = ticketId.split("_");
+		int flr_index, slot_index;
+		try {
+			flr_index = Integer.parseInt(extract[1]) - 1;
+			slot_index = Integer.parseInt(extract[2]) - 1;
+		} catch (Exception e) {
+			System.out.println("Invalid ticket");
+			return;
+		}
+
+		for (int i = 0; i < slots.size(); i++) {
+			for (int j = 0; j < slots.size(); j++) {
+				if (i == flr_index && j == slot_index) {
+					Slot slot = slots.get(i).get(j);
+					slot.vehicle = null;
+					slot.ticketID = null;
+					System.out.println("Unparked vehicle");
+				}
+			}
+		}
+	}
+
 }
