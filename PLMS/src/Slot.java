@@ -1,12 +1,11 @@
-
 public class Slot {
 	String type;
 	Vehicle vehicle;
-	String ticketID;
-	
+	String ticketId;
+
 	public Slot(String type) {
 		this.type = type;
 		this.vehicle = null;
-		this.ticketID = null;
+		this.ticketId = null;
 	}
 }
