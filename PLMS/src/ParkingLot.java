@@ -65,4 +65,15 @@ public class ParkingLot {
 		}
 	}
 
+	void displayOpenSlots(String type) {
+		for (int i = 0; i < slots.size(); i++) {
+			for (int j = 0; j < slots.get(i).size(); j++) {
+				Slot slot = slots.get(i).get(j);
+				if (slot.vehicle != null && slot.type.equals(type)) {
+					System.out.println("Floor " + (i + 1) + " slot " + (j + 1));
+				}
+			}
+		}
+	}
+
 }
