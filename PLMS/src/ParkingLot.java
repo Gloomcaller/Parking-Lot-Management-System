@@ -5,10 +5,8 @@ public class ParkingLot {
 	String parkingLotID;
 	List<List<Slot>> slots;
 
-	public ParkingLot(String parkingLotID, int nfloors, int noOfSlotsOerFlr) {
-
+	public ParkingLot(String parkingLotID, int nfloors, int noOfSlotsPerFlr) {
 		this.parkingLotID = parkingLotID;
-
 		slots = new ArrayList<>();
 		for (int i = 0; i < nfloors; i++) {
 			slots.add(new ArrayList<>());
@@ -17,20 +15,19 @@ public class ParkingLot {
 			floorSlots.add(new Slot("bike"));
 			floorSlots.add(new Slot("bike"));
 
-			for (int j = 3; j < noOfSlotsOerFlr; j++) {
-				slots.get(i).add(new Slot("car"));
+			for (int j = 3; j < noOfSlotsPerFlr; j++) {
+				floorSlots.add(new Slot("car"));
 			}
 		}
 	}
 
 	public String parkVehicle(String type, String regNO, String color) {
-
-		Vehicle vehicle = new Vehicle("TempType", "TempRegNo", "TempColor");
+		Vehicle vehicle = new Vehicle(type, regNO, color);
 
 		for (int i = 0; i < slots.size(); i++) {
-			for (int j = 0; j < slots.size(); j++) {
+			for (int j = 0; j < slots.get(i).size(); j++) {
 				Slot slot = slots.get(i).get(j);
-				if (slot.type == type && slot.vehicle == null) {
+				if (slot.type.equals(type) && slot.vehicle == null) {
 					slot.vehicle = vehicle;
 					slot.ticketID = generateTicketId(i + 1, j + 1);
 					return slot.ticketID;
@@ -42,6 +39,7 @@ public class ParkingLot {
 	}
 
 	private String generateTicketId(int flr, int slno) {
-		return parkingLotId + "_" + flr + "_" + slno;
+		return parkingLotID + "_" + flr + "_" + slno;
 	}
+
 }
