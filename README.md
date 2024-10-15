@@ -1,7 +1,7 @@
 # Parking Lot Management System
 
 ## Overview
-This project implements a simple parking lot management system inspired by Kunal Nalawade guided project from FreeCodeCamp. It allows for the parking and unparking of vehicles, and provides details about available and occupied slots. The system is designed with basic object-oriented principles and includes encapsulation and exception handling.
+This project implements a simple parking lot management system inspired by Kunal Nalawade guided project from FreeCodeCamp. It allows for the parking and unparking of vehicles, and provides details about available and occupied slots. The system is designed with basic object-oriented principles and includes encapsulation and exception handling. The point of this project is to refresh my Java memory after a period of simply not coding in Java.
 
 ## Features
 - **Park a Vehicle:** Assign a vehicle to an available slot based on its type (car, bike, truck).
@@ -26,14 +26,5 @@ This project implements a simple parking lot management system inspired by Kunal
     java Main
     ```
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request on GitHub.
-
 ## Credits
-- Special thanks to www.freecodecamp.org team and Kunal Nalawade.
-
-## Contact
-For any inquiries, please contact me via GitHub.
+- Special thanks to www.freecodecamp.org team and Kunal Nalawade for this nice and simple guided project.
